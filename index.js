@@ -9,7 +9,10 @@ app.use(express.urlencoded({extended:true}));
 const apiPrefix = '/api/v1';
 const PORT = process.env.PORT || 3000;
 
-// routes
+// route
+app.use('/api/url', require('./src/routes/url'));
+app.use('/', require('./src/routes/redirect'));
+
 
 app.all('*', (req, res) => {
     Logger.http(`route: url '${req.url}' not found`);
