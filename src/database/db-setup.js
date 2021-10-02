@@ -12,7 +12,7 @@ fs.readFile(path, 'utf-8', function (err, data) {
     }
     try {
         db.exec(data);
-        Logger.info('Table was created successfully.');
+        Logger.info('Table urls was created successfully.');
     } catch (err) {
         Logger.error(err.message);
     }
