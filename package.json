@@ -1,0 +1,30 @@
+{
+  "name": "mojtaba-url-shortener-api",
+  "version": "1.0.0",
+  "description": "URL Shortener API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lo-Agency/mojtaba-url-shortener-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lo-Agency/mojtaba-url-shortener-api/issues"
+  },
+  "homepage": "https://github.com/Lo-Agency/mojtaba-url-shortener-api#readme",
+  "dependencies": {
+    "@lo-agency/logger": "^1.0.12",
+    "better-sqlite3": "^7.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
