@@ -1,7 +1,8 @@
-require('dotenv').config();
 const { Logger } = require('@lo-agency/logger');
-const db = require('./db-connection');
+require('dotenv').config();
 const fs = require('fs');
+const db = require('./db-connection');
+
 const path = 'src/database/migration/urls.sql';
 
 
