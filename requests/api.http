@@ -1,6 +1,0 @@
-POST http://localhost:3000/api/url/shorten
-Content-Type: application/json
-
-{
-    "longUrl" : "https://www.amazon.de/-/en/1920x1080-WideView-Anti-Glare-Notebook-Graphics/dp/B0868X7HSR/?_encoding=UTF8&pd_rd_w=xbWxT&pf_rd_p=384f0d02-8a3d-4dbd-8dac-79e6316fe05e&pf_rd_r=HFN9B201B82F1ZEJ9TP9&pd_rd_r=bf94c6d0-25de-4963-b3a4-82ce18d77700&pd_rd_wg=zlFNy&ref_=pd_gw_ci_mcx_mr_hp_atf_m"
-}
