@@ -27,7 +27,7 @@ const getAllData = function (tableName, properties) {
  */
 const getData = function (tableName, properties, whereProperty, wherePropertyValue, orderby = 'id ASC'){
     return db.prepare(`SELECT ${properties} FROM ${tableName} 
-        WHERE ${whereProperty} = ? ORDERBY ${orderby}`).all(wherePropertyValue);
+        WHERE ${whereProperty} = ? ORDER BY ${orderby}`).all(wherePropertyValue);
 }
 
 
@@ -42,3 +42,5 @@ const insertData = function (tableName, data, properties){
     const statement = db.prepare(`INSERT INTO ${tableName} (${properties.join(", ")}) VALUES (@${properties.join(", @")})`);
     return statement.run(data);
 }
+
+module.exports = {getAllData, getData, insertData };
