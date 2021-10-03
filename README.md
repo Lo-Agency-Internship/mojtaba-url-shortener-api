@@ -29,7 +29,7 @@ This is made up of a generated code, if this does not already exist. A click on 
 
 | End Point  | Method | Action 
 | ------------- | ------------- | ------------- |
-| /url/api/shorten | POST |  To get a short url using the correct structure. [POST Request body structure](#post-request-body)
+| /api/url/shorten | POST |  To get a short url using the correct structure. [POST Request body structure](#post-request-body)
 | / | GET | To get the long url, which already has a short url in the database 
 
 ## POST Request Body
