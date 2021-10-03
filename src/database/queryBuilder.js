@@ -1,18 +1,5 @@
 const db = require('./db-connection');
 
-/**
- * get all data from database
- * @param {String} tableName    - the name of the table in database
- * @param {string} properties   - the properties(colums) of the table
- * @returns                     - the return value is an array of row objects,
- *                                if no rows are found, the array will be empty,
- *                                if execution of the statement fails, an Error is thrown
- */
-const getAllData = function (tableName, properties) {
-    const statement = db.prepare(`SELECT ${properties} FROM ${tableName}`);
-    return statement.all();
-}
-
 
 /**
  * get single row from a table of database
@@ -43,4 +30,4 @@ const insertData = function (tableName, data, properties){
     return statement.run(data);
 }
 
-module.exports = {getAllData, getData, insertData };
+module.exports = {getData, insertData };
