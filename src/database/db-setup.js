@@ -3,13 +3,18 @@ require('dotenv').config();
 const fs = require('fs');
 const db = require('./db-connection');
 
-const path = 'src/database/migration/urls.sql';
+// Path to the file which contains our create command to create the table urls
+const path = 'src/database/migration/01.urls.sql';
 
 
-// read the file with a sync function
+/**
+ * Reads the file from above path and executes the data
+ * 
+ */
 fs.readFile(path, 'utf-8', function (err, data) {
     if(err){
-        return Logger.error(err.message);
+        Logger.error(err.message);
+        return;
     }
     try {
         db.exec(data);
