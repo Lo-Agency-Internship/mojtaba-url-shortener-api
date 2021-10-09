@@ -4,11 +4,11 @@ const express = require("express");
 const { getData } = require("../database/queryBuilder");
 const router = express.Router();
 
-const TABLENAME = "urls";
+const TABLE_NAME = "urls";
 
 router.get("/:urlCode", (req, res) => {
   try {
-    let url = getData(TABLENAME, "urlCode", req.params.urlCode);
+    let url = getData(TABLE_NAME, "urlCode", req.params.urlCode);
 
     if (url.length === 0) {
       Logger.info(`There is no URL with the urlcode: : ${req.params.urlCode}`);
