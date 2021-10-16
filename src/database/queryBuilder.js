@@ -1,4 +1,4 @@
-const db = require("./db-connection");
+const db = require('./db-connection');
 
 /**
  * get single row from a table of database
@@ -11,17 +11,17 @@ const db = require("./db-connection");
  *                                                if execution of the statement fails, an Error is thrown
  */
 const getData = function (
-  tableName,
-  whereProperty,
-  wherePropertyValue,
-  orderby = "id ASC"
+	tableName,
+	whereProperty,
+	wherePropertyValue,
+	orderby = 'id ASC'
 ) {
-  return db
-    .prepare(
-      `SELECT * FROM ${tableName} 
+	return db
+		.prepare(
+			`SELECT * FROM ${tableName} 
         WHERE ${whereProperty} = ? ORDER BY ${orderby}`
-    )
-    .all(wherePropertyValue);
+		)
+		.all(wherePropertyValue);
 };
 
 /**
@@ -32,12 +32,12 @@ const getData = function (
  * @returns                     - an info object describing any changes made: (info.changes & info.lastInsertROWID)
  */
 const insertData = function (tableName, data, properties) {
-  const statement = db.prepare(
-    `INSERT INTO ${tableName} (${properties.join(
-      ", "
-    )}) VALUES (@${properties.join(", @")})`
-  );
-  return statement.run(data);
+	const statement = db.prepare(
+		`INSERT INTO ${tableName} (${properties.join(
+			', '
+		)}) VALUES (@${properties.join(', @')})`
+	);
+	return statement.run(data);
 };
 
 module.exports = { getData, insertData };
