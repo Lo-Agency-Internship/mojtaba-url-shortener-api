@@ -31,7 +31,9 @@ For a long url there is only a shortened url in the database, the generated code
 
 [NodeJs](https://nodejs.org/en/) as runtime environment that runs on the V8 engine and executes JavaScript code.
 
+[Yarn](https://classic.yarnpkg.com/en/) as a popular package manager for the JavaScript programming language.
 
+&nbsp;
 
 ## Installation
 
@@ -40,11 +42,11 @@ For a long url there is only a shortened url in the database, the generated code
    ```git clone https://github.com/Lo-Agency/mojtaba-url-shortener-api.git```
 - Duplicate the ```.env.example``` file and name it ```.env``` and set your own environment variables
 - To Install dependencies: 
-```npm install```
-- To Setup database: ```npm run db-setup```
-- To Run the app server in development mode: ```npm run dev```
+```yarn install```
+- To Setup database: ```yarn run db-setup```
+- To Run the app server in development mode: ```yarn run dev```
 
-
+&nbsp;
 
 ## Usage
 
@@ -53,11 +55,15 @@ For a long url there is only a shortened url in the database, the generated code
 | /api/url/shorten | POST |  To get a short url using the correct structure. [POST Request body structure](#post-request-body)
 | / | GET | To get the long url, which already has a short url in the database 
 
+&nbsp;
+
 ## POST Request Body
 
 {
     "longUrl": "*your long url*"
 }
+
+&nbsp;    
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
