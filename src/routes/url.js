@@ -1,18 +1,29 @@
-require("dotenv").config();
-const { Logger } = require("@lo-agency/logger");
-const validUrl = require("valid-url");
-const express = require("express");
-const router = express.Router();
-const { getData, insertData } = require("../database/queryBuilder");
-const helper = require("../utils/helper");
+const dotenv = require("dotenv"),
+  { Logger } = require("@lo-agency/logger"),
+  validUrl = require("valid-url"),
+  express = require("express"),
+  router = express.Router(),
+  { getData, insertData } = require("../database/queryBuilder"),
+  helper = require("../utils/helper")
+;
 
-const TABLENAME = "urls";
+dotenv.config();
+
+const TABLE_NAME = "urls";
 
 router.post("/shorten", (req, res) => {
   const { longUrl } = req.body;
 
+  // check long url
+  if (!validUrl.isUri(longUrl)) {
+    Logger.warn("Invalid longUrl");
+    res.status(401).json({ message: "Invalid longUrl" });
+    return;
+  }
+
+
   // API base url endpoint
-  const baseUrl = req.protocol + "://" + req.hostname + ":" + 3000;
+  const baseUrl = req.protocol + "://" + req.hostname;
 
   //check base url
   if (!validUrl.isUri(baseUrl)) {
@@ -23,29 +34,23 @@ router.post("/shorten", (req, res) => {
   //create unique url code
   const urlCode = helper.generateID((Math.random() * 1000000000000).toFixed(0));
 
-  // check long url
-  if (!validUrl.isUri(longUrl)) {
-    Logger.warn("Invalid longUrl");
-    res.status(401).json({ message: "Invalid longUrl" });
-    return;
-  }
   try {
-    let url = getData(TABLENAME, "longUrl", longUrl);
+    let url = getData(TABLE_NAME, "longUrl", longUrl);
     if (url.length === 0) {
-      const shortUrl = baseUrl + "/" + urlCode;
+      const shortUrl = `${baseUrl}/${urlCode}`;
       const newRecord = {
         urlCode,
         shortUrl,
         longUrl,
-        createdAt: Date.now().toString(),
+        createdAt: new Date().toString()
       };
       res
-        .status(200)
+        .status(201)
         .json(
           getData(
-            TABLENAME,
+            TABLE_NAME,
             "id",
-            insertData(TABLENAME, newRecord, Object.keys(newRecord))
+            insertData(TABLE_NAME, newRecord, Object.keys(newRecord))
               .lastInsertRowid
           )
         );
